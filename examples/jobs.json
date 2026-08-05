@@ -1,0 +1,101 @@
+{
+  "_comment": "Offline demo data for `spool sync --fixture`. Field names match the Job dataclass; started may be an ISO string or epoch seconds. Nothing here touches a network.",
+  "jobs": [
+    {
+      "id": "demo-001",
+      "name": "benchy.gcode",
+      "printer": "Voron 2.4",
+      "filament_g": 12.9,
+      "duration_s": 3723,
+      "status": "success",
+      "started": "2026-01-08T18:20:00+00:00"
+    },
+    {
+      "id": "demo-002",
+      "name": "vase-mode-planter.gcode",
+      "printer": "Voron 2.4",
+      "filament_g": 148.2,
+      "duration_s": 27180,
+      "status": "success",
+      "started": "2026-01-14T09:05:00+00:00"
+    },
+    {
+      "id": "demo-003",
+      "name": "drawer-organiser.gcode",
+      "printer": "Voron 2.4",
+      "filament_g": 212.5,
+      "duration_s": 41400,
+      "status": "failed",
+      "failed_at_fraction": 0.35,
+      "notes": "Warped corner lifted, knocked the part loose",
+      "started": "2026-01-22T21:40:00+00:00"
+    },
+    {
+      "id": "demo-004",
+      "name": "camera-mount-v2.gcode",
+      "printer": "Prusa MK4",
+      "filament_g": 46.8,
+      "duration_s": 9900,
+      "status": "success",
+      "started": "2026-02-03T11:15:00+00:00"
+    },
+    {
+      "id": "demo-005",
+      "name": "hinge-test.gcode",
+      "printer": "Prusa MK4",
+      "filament_g": 8.4,
+      "duration_s": 1560,
+      "status": "cancelled",
+      "failed_at_fraction": 0.6,
+      "notes": "Stopped it, wrong orientation",
+      "started": "2026-02-09T16:02:00+00:00"
+    },
+    {
+      "id": "demo-006",
+      "name": "cable-chain-x40.gcode",
+      "printer": "Voron 2.4",
+      "filament_g": 97.3,
+      "duration_s": 19080,
+      "status": "success",
+      "started": "2026-02-17T08:30:00+00:00"
+    },
+    {
+      "id": "demo-007",
+      "name": "shelf-bracket.gcode",
+      "printer": "Voron 2.4",
+      "filament_g": 132.0,
+      "duration_s": 25200,
+      "status": "success",
+      "started": "2026-03-01T13:44:00+00:00"
+    },
+    {
+      "id": "demo-008",
+      "name": "gridfinity-bins-x6.gcode",
+      "printer": "Prusa MK4",
+      "filament_g": 178.6,
+      "duration_s": 34500,
+      "status": "success",
+      "started": "2026-03-12T19:10:00+00:00"
+    },
+    {
+      "id": "demo-009",
+      "name": "spool-holder.gcode",
+      "printer": "Prusa MK4",
+      "filament_g": 88.1,
+      "duration_s": 16800,
+      "status": "failed",
+      "failed_at_fraction": 0.82,
+      "notes": "Ran out of filament mid print",
+      "started": "2026-03-20T07:55:00+00:00"
+    },
+    {
+      "id": "demo-010",
+      "name": "phone-stand.gcode",
+      "printer": "Voron 2.4",
+      "filament_g": 34.7,
+      "duration_s": 7020,
+      "status": "success",
+      "started": "2026-03-28T20:25:00+00:00"
+    }
+  ]
+}
