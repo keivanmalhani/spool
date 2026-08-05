@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+build/
+dist/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# spool's own output. The database is your inventory; keep it out of git.
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+spool-dashboard.html
+*-dashboard.html
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
