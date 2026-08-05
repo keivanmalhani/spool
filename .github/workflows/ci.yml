@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: pytest on Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install the package and its test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+
+      - name: Run the test suite
+        run: python -m pytest -v
+
+      - name: Verify the runtime has no third party dependencies
+        # The whole point of this project is that it installs anywhere with no
+        # wheels to build. If a runtime import of something outside the
+        # standard library ever sneaks in, this step fails.
+        run: |
+          python -m pip uninstall -y pytest pluggy iniconfig packaging pygments
+          python -c "import spool.cli, spool.db, spool.cost, spool.gcode, spool.sources, spool.dashboard, spool.report, spool.models"
+          python -m spool.cli --version
+
+      - name: Smoke test the command line end to end
+        run: |
+          set -e
+          mkdir -p /tmp/spool-smoke
+          cd /tmp/spool-smoke
+          spool init
+          spool add --material PLA --brand Demo --color Black --price 25.00
+          spool config --set tariff_per_kwh=0.30 --set default_watts=150
+          spool sync --fixture "$GITHUB_WORKSPACE/examples/jobs.json" --spool 1
+          spool cost --by month
+          spool dashboard --out dashboard.html
+          test -s dashboard.html
+          ! grep -q "http" dashboard.html
+          ! grep -q "<script src" dashboard.html
+          echo "dashboard has no external references"

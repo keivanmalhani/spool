@@ -1,0 +1,32 @@
+version: 2
+
+# spool has no runtime dependencies by design, so there is nothing for
+# Dependabot to bump in the package itself. What it does watch is the CI
+# workflow: pinned GitHub Actions are supply chain surface, and a stale
+# checkout action is the most likely thing in this repository to go out of
+# date. The pip ecosystem is listed anyway so that the dev extra (pytest) is
+# covered if it ever grows.
+
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: ci
+    labels:
+      - dependencies
+      - github-actions
+
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: deps
+    labels:
+      - dependencies
+      - python
