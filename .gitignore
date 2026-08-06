@@ -30,3 +30,7 @@ spool-dashboard.html
 .idea/
 *.swp
 .DS_Store
+
+# env secrets, never commit
+.env
+.env.*
