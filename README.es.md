@@ -10,6 +10,8 @@ local.
 
 Leer en [ingles / in English](README.md).
 
+![Demo de spool: registra una impresion fallida y mira como el reporte de costo la contabiliza](docs/demo.gif)
+
 `spool` registra que filamento tienes y cuanto costo, importa los trabajos
 terminados desde Klipper/Moonraker, OctoPrint o un archivo `.gcode`, descuenta
 el material de las bobinas y te dice cuanto costo de verdad cada impresion,

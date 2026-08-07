@@ -9,6 +9,8 @@ Local-first filament inventory and true print cost calculator for 3D printing.
 
 Read this in [Spanish / en espanol](README.es.md).
 
+![spool demo: log a failed print and watch the cost report account for it](docs/demo.gif)
+
 `spool` tracks what filament you own and what it cost, ingests finished print
 jobs from Klipper/Moonraker, OctoPrint or a `.gcode` file, decrements your
 spools, and tells you what every print actually cost, including electricity,
